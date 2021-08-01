@@ -11,6 +11,7 @@ let allDays = photos.length;
   changeDay = function() {
      // console.log(change)
       document.querySelector('.slot').innerHTML = photos[firstDay].game;
+      document.querySelector('.image').src = photos[firstDay].src
     firstDay = (firstDay + 1) % allDays;
   }
   function ohNo() {
@@ -21,6 +22,18 @@ let allDays = photos.length;
         clearInterval(ohYeah)
         slot.classList.remove("on");
     slot.classList.add("off");
+    } ,timeOutNumer());
+  };
+
+  // more 
+  function clssChange(html) {
+    html.classList.remove("off")
+    html.classList.add("on"); 
+    ohYeah = setInterval(changeDay, 100);//must match css animation
+    setTimeout(()=> {
+        clearInterval(ohYeah)
+        html.classList.remove("on");
+        html.classList.add("off");
     } ,timeOutNumer());
   };
 
